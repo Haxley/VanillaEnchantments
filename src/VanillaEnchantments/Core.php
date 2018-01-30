@@ -1,8 +1,9 @@
 <?php
+
 namespace VanillaEnchantments;
 
+use pocketmine\event\Listener;
 use pocketmine\item\enchantment\Enchantment;
-
 use pocketmine\plugin\PluginBase;
 
 # Developed by TheAz928(Az928)
@@ -13,205 +14,243 @@ use pocketmine\plugin\PluginBase;
 # GNU General Public license :v3.0.0 and later
 
 class Core extends PluginBase{
-	
+
 	public function onLoad(){
-	    $this->getServer()->getLogger()->info("§8[§aVanillaEnchants§8]§7 loading.....");
+		$this->getServer()->getLogger()->info("§8[§aVanillaEnchants§8]§7 loading.....");
 	}
-	
+
 	public function onEnable(){
-	    $this->registerEnchants();
-	    $this->getLogger()->info("§aVanilla Enchants§7 has been implemented and started successfully!");
+		$this->registerEnchants();
+		$this->getLogger()->info("§aVanilla Enchants§7 has been implemented and started successfully!");
 	}
-   
+
 	public function registerEnchants(){
-	    $this->registerProtection();
-	    $this->registerFireProtection();
-	    $this->registerFeatherFalling();
-	    $this->registerBlastProtection();
-	    $this->registerProjectileProtection();
-	    $this->registerThorns();
-	    $this->registerDepthStrider();
-	    $this->registerAquaAffinity();
-	    $this->registerSharpness();
-	    $this->registerSmite(); 
-	    $this->registerBaneOfArthropods();
-	    $this->registerKnockback();
-	    $this->registerFireAspect();
-	    $this->registerLooting();
-	    $this->registerFortune();
-	    $this->registerPower();
-	    $this->registerPunch();
-	    $this->registerFlame();
-	    $this->registerInfinity();
+		$this->registerProtection();
+		$this->registerFireProtection();
+		$this->registerFeatherFalling();
+		$this->registerBlastProtection();
+		$this->registerProjectileProtection();
+		$this->registerThorns();
+		$this->registerRespiration();
+		$this->registerDepthStrider();
+		$this->registerAquaAffinity();
+		$this->registerSharpness();
+		$this->registerSmite();
+		$this->registerBaneOfArthropods();
+		$this->registerKnockback();
+		$this->registerFireAspect();
+		$this->registerLooting();
+		$this->registerEfficiency();
+		$this->registerSilkTouch();
+		$this->registerUnbreaking();
+		$this->registerFortune();
+		$this->registerPower();
+		$this->registerPunch();
+		$this->registerFlame();
+		$this->registerInfinity();
 	}
-	
+
 	/**
-	 * @return Protection
+	 * @void registerProtection
+	 * @return Listener
 	 */
-	
 	public function registerProtection(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::PROTECTION, "Protection", 0, Enchantment::SLOT_ARMOR, 5));
-	    return new handlers\Protection($this);
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::PROTECTION, "Protection", 0, 0, Enchantment::SLOT_ARMOR));
+		return new handlers\Protection($this);
 	}
-	
+
 	/**
-	 * @return FireProtection
+	 * @void registerFireProtection
+	 * @return Listener
 	 */
-	
 	public function registerFireProtection(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::FIRE_PROTECTION, "Fire protection", 1, Enchantment::SLOT_ARMOR, 5));
-   	 return new handlers\FireProtection($this);   
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::FIRE_PROTECTION, "Fire protection", 1, 0, Enchantment::SLOT_ARMOR));
+		return new handlers\FireProtection($this);
 	}
-	
+
 	/**
-	 * @return FeatherFalling
+	 * @void registerFeatherFalling
+	 * @return Listener
 	 */
-	
 	public function registerFeatherFalling(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::FEATHER_FALLING, "Feather falling", 1, Enchantment::SLOT_FEET, 4));
-	    return new handlers\FeatherFalling($this);
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::FEATHER_FALLING, "Feather falling", 1, 0, Enchantment::SLOT_FEET));
+		return new handlers\FeatherFalling($this);
 	}
-	
+
 	/**
-	 * @return BlastProtection
+	 * @void registerBlastProtection
+	 * @return Listener
 	 */
-	
 	public function registerBlastProtection(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::BLAST_PROTECTION, "Blast protection", 1, Enchantment::SLOT_ARMOR, 5));
-	    return new handlers\BlastProtection($this);
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::BLAST_PROTECTION, "Blast protection", 1, 0, Enchantment::SLOT_ARMOR));
+		return new handlers\BlastProtection($this);
 	}
-	
+
 	/**
-	 * @return ProjectileProtection
+	 * @void registerProjectileProtection
+	 * @return Listener
 	 */
-	
 	public function registerProjectileProtection(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::PROJECTILE_PROTECTION, "Projectile protection", 1, Enchantment::SLOT_ARMOR, 5));
-	    return new handlers\ProjectileProtection($this);
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::PROJECTILE_PROTECTION, "Projectile protection", 1, 0, Enchantment::SLOT_ARMOR));
+		return new handlers\ProjectileProtection($this);
 	}
-	
+
 	/**
-	 * @return Thorns
+	 * @void registerThorns
+	 * @return Listener
 	 */
-	
 	public function registerThorns(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::THORNS, "Thorns", 1, Enchantment::SLOT_ARMOR, 3));
-	    return new handlers\Thorns($this);
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::THORNS, "Thorns", 1, 0, Enchantment::SLOT_ARMOR));
+		return new handlers\Thorns($this);
 	}
-	
+
 	/**
-	 * @return DepthStrider
+	 * @void registerRespiration
 	 */
-	
+	public function registerRespiration(){
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::RESPIRATION, "Respiration", 1, 0, Enchantment::SLOT_HEAD));
+		//returns nothing
+	}
+
+	/**
+	 * @void registerDepthStrider
+	 * @return Listener
+	 */
 	public function registerDepthStrider(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::DEPTH_STRIDER, "Depth strider", 1, Enchantment::SLOT_FEET, 3));
-	    return new handlers\DepthStrider($this);
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::DEPTH_STRIDER, "Depth strider", 1, 0, Enchantment::SLOT_FEET));
+		return new handlers\DepthStrider($this);
 	}
-	
+
 	/**
-	 * @return null
+	 * @void registerAquaAffinity
 	 */
-	
 	public function registerAquaAffinity(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::AQUA_AFFINITY, "Aqua Affinity", 1, Enchantment::SLOT_HEAD, 3));
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::AQUA_AFFINITY, "Aqua Affinity", 1, 0, Enchantment::SLOT_HEAD));
+		//returns nothing
 	}
-	
+
 	/**
-	 * @return Sharpness
+	 * @void registerSharpness
+	 * @return Listener
 	 */
-	
 	public function registerSharpness(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::SHARPNESS, "Sharpness", 1, Enchantment::SLOT_TOOL, 5));
-	    return new handlers\Sharpness($this);
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::SHARPNESS, "Sharpness", 1, 0, Enchantment::SLOT_TOOL));
+		return new handlers\Sharpness($this);
 	}
-	
+
 	/**
-	 * @return Smite
+	 * @void registerSmite
+	 * @return Listener
 	 */
-	
 	public function registerSmite(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::SMITE, "Smite", 1, Enchantment::SLOT_SWORD, 5));
-	    return new handlers\Smite($this);
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::SMITE, "Smite", 1, 0, Enchantment::SLOT_SWORD));
+		return new handlers\Smite($this);
 	}
-	
+
 	/**
-	 * @return BaneOfArthropods
+	 * @void registerBaneOfArthropods
+	 * @return Listener
 	 */
-	
 	public function registerBaneOfArthropods(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::BANE_OF_ARTHROPODS, "Bane of Arthropods", 1, Enchantment::SLOT_SWORD, 5));
-	    return new handlers\BaneOfArthropods($this);
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::BANE_OF_ARTHROPODS, "Bane of Arthropods", 1, 0, Enchantment::SLOT_SWORD));
+		return new handlers\BaneOfArthropods($this);
 	}
-	
-	/**
-	 * @return Knockback
-	 */
 
+	/**
+	 * @void registerKnockback
+	 * @return Listener
+	 */
 	public function registerKnockback(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::KNOCKBACK, "Knockback", 1, Enchantment::SLOT_SWORD, 2));
-       return new handlers\Knockback($this);
-   }
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::KNOCKBACK, "Knockback", 1, 0, Enchantment::SLOT_SWORD));
+		return new handlers\Knockback($this);
+	}
 
-   /**
-	 * @return FireAspect
+	/**
+	 * @void registerFireAspect
+	 * @return Listener
 	 */
-	
 	public function registerFireAspect(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::FIRE_ASPECT, "Fire aspect", 1, Enchantment::SLOT_SWORD, 2));
-	    return new handlers\FireAspect($this);
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::FIRE_ASPECT, "Fire aspect", 1, 0, Enchantment::SLOT_SWORD));
+		return new handlers\FireAspect($this);
 	}
-	
-	/**
-	 * @return Looting
-	 */
-	
-	public function registerLooting(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::LOOTING, "Looting", 1, Enchantment::SLOT_SWORD, 3));
-	    return new handlers\Looting($this);
-	}
-	
-	/**
-	 * @return Fortune
-	 */
-	
-	public function registerFortune(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::FORTUNE, "Fortune", 0, Enchantment::SLOT_PICKAXE, 3));
-	    return new handlers\Fortune($this);
-   }
 
-   /**
-	 * @return Power
+	/**
+	 * @void registerLooting
+	 * @return Listener
 	 */
-	
+	public function registerLooting(){
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::LOOTING, "Looting", 1, 0, Enchantment::SLOT_SWORD));
+		return new handlers\Looting($this);
+	}
+
+	/**
+	 * @void registerEfficiency
+	 */
+	public function registerEfficiency(){
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::EFFICIENCY, "Efficiency", 1, 0, Enchantment::SLOT_PICKAXE));
+		//returns nothing
+	}
+
+	/**
+	 * @void registerSilkTouch
+	 * @return Listener
+	 */
+	public function registerSilkTouch(){
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::SILK_TOUCH, "Silk touch", 2, 0, Enchantment::SLOT_TOOL));
+		return new handlers\SilkTouch($this);
+	}
+
+	/**
+	 * @void registerUnbreaking
+	 * @return Listener
+	 */
+	public function registerUnbreaking(){
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::UNBREAKING, "Unbreaking", 0, 0, Enchantment::SLOT_TOOL));
+		return new handlers\Unbreaking($this);
+	}
+
+	/**
+	 * @void registerFortune
+	 * @return Listener
+	 */
+	public function registerFortune(){
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::FORTUNE, "Fortune", 0, 0, Enchantment::SLOT_PICKAXE)); # Not sure
+		return new handlers\Fortune($this);
+	}
+
+	/**
+	 * @void registerPower
+	 * @return Listener
+	 */
 	public function registerPower(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::POWER, "Power", 0, Enchantment::SLOT_BOW, 5));
-	    return new handlers\Power($this);
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::POWER, "Power", 0, 0, Enchantment::SLOT_BOW));
+		return new handlers\Power($this);
 	}
-	
+
 	/**
-	 * @return Punch
+	 * @void registerPunch
+	 * @return Listener
 	 */
-	
 	public function registerPunch(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::PUNCH, "Punch", 1, Enchantment::SLOT_BOW, 2));
-	    return new handlers\Punch($this);
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::PUNCH, "Punch", 1, 0, Enchantment::SLOT_BOW));
+		return new handlers\Punch($this);
 	}
-	
+
 	/**
-	 * @return Flame
+	 * @void registerFlame
+	 * @return Listener
 	 */
-	
 	public function registerFlame(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::FLAME, "Flame", 1, Enchantment::SLOT_BOW, 2));
-	    return new handlers\Flame($this);
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::FLAME, "Flame", 1, 0, Enchantment::SLOT_BOW));
+		return new handlers\Flame($this);
 	}
-	
+
 	/**
-	 * @return Infinity
+	 * @void registerInfinity
+	 * @return Listener
 	 */
-	
 	public function registerInfinity(){
-	    Enchantment::registerEnchantment(new Enchantment(Enchantment::INFINITY, "Infinity", 2, Enchantment::SLOT_BOW, 1));
-	    return new handlers\Infinity($this);
+		Enchantment::registerEnchantment(new Enchantment(Enchantment::INFINITY, "Infinity", 2, 0, Enchantment::SLOT_BOW));
+		return new handlers\Infinity($this);
 	}
 }
